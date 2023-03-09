@@ -1,0 +1,72 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Carros</h1>
+
+<div id="carros">
+  <% @carros.each do |carro| %>
+    <%= render carro %>
+    <p>
+      <%= link_to "Show this carro", carro %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Novo carro", new_carro_path %>
+
+
+<h1> API - Estados</h1>
+
+<a href="http://localhost:3000/estados.json">Estados</a><br>
+<a href="http://localhost:3000/estados.json">Cidades</a><br>
+<a href="http://localhost:3000/estados.json">Clubes</a><br>
+
+<div style="margin-top: 30px">
+<h5>Estados</h5>
+<select id="estados">
+    <option>Selecione</option>
+</select>
+</div>
+
+<div style="margin-top: 30px">
+<h5>Cidades</h5>
+<select id="cidades">
+    <option>Selecione</option>
+</select>
+<div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+
+    var loadEstados = function(){
+      $.ajax({
+        url: "http://localhost:3000/estados.json"
+      }).done(function(dados) {
+        $("#estados").html("<option>Selecione</option>")
+        $(dados).each(function(){
+        $("#estados").append("<option value='" + this.uf + "'> "+ this.nome +"</option>")
+        });
+          });
+    }
+
+    loadEstados();
+   
+
+
+</script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript">
+   
+$.ajax({
+  url: "http://localhost:3000/cidades.json"
+}).done(function(dados) {
+  $("#cidades").html("<option>Selecione</option>")
+  $(dados).each(function(){
+  $("#cidades").append("<option value='" + this.uf + "'> "+ this.nome +"</option>")
+  });
+    });
+
+</script>
