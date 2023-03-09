@@ -22,7 +22,7 @@
 
 <div style="margin-top: 30px">
 <h5>Estados</h5>
-<select id="estados">
+<select id="estados" onchange="loadCidades(this.value)">
     <option>Selecione</option>
 </select>
 </div>
@@ -45,6 +45,17 @@
         $("#estados").html("<option>Selecione</option>")
         $(dados).each(function(){
         $("#estados").append("<option value='" + this.uf + "'> "+ this.nome +"</option>")
+        });
+          });
+    }
+
+    var loadCidades = function(uf){
+      $.ajax({
+        url: "http://localhost:3000/cidades.json?uf=" + uf
+      }).done(function(dados) {
+        $("#cidades").html("<option>Selecione</option>")
+        $(dados).each(function(){
+        $("#cidades").append("<option value='" + this.uf + "'> "+ this.nome +"</option>")
         });
           });
     }
