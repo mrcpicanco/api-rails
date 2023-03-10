@@ -16,9 +16,9 @@
 
 <h1> API - Estados</h1>
 
-<a href="http://localhost:3000/estados.json">Estados</a><br>
-<a href="http://localhost:3000/estados.json">Cidades</a><br>
-<a href="http://localhost:3000/estados.json">Clubes</a><br>
+<a href="http://api.localhost:3000/estados.json">Estados</a><br>
+<a href="http://api.localhost:3000/estados.json">Cidades</a><br>
+<a href="http://api.localhost:3000/estados.json">Clubes</a><br>
 
 <div style="margin-top: 30px">
 <h5>Estados</h5>
@@ -40,7 +40,7 @@
 
     var loadEstados = function(){
       $.ajax({
-        url: "http://localhost:3000/estados.json"
+        url: "http://api.localhost:3000/estados.json"
       }).done(function(dados) {
         $("#estados").html("<option>Selecione</option>")
         $(dados).each(function(){
@@ -51,7 +51,7 @@
 
     var loadCidades = function(uf){
       $.ajax({
-        url: "http://localhost:3000/cidades.json?uf=" + uf
+        url: "http://api.localhost:3000/cidades.json?uf=" + uf
       }).done(function(dados) {
         $("#cidades").html("<option>Selecione</option>")
         $(dados).each(function(){
